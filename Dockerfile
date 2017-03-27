@@ -14,7 +14,7 @@ MAINTAINER Matt Heckathorn <maheckathorn@cert.org>
 ENV VIRTUSER demo
 
 # Specify software versions to download
-ARG SILK_VERSION=3.14.0
+ARG SILK_VERSION=3.15.0
 ARG FIXBUF_VERSION=1.7.1
 ARG NETSA_PYTHON_VERSION=1.5
 ARG PYFIXBUF_VERSION=0.2.1
