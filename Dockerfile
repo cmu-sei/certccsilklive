@@ -68,19 +68,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN adduser --disabled-password --gecos "" $VIRTUSER
 
 # Download & Install latest silk-y stuff
-RUN su -l -c "curl http://tools.netsa.cert.org/releases/libfixbuf-$FIXBUF_VERSION.tar.gz | tar -xz && cd libfixbuf-* && ./configure && make && make install && cd ../"
-RUN su -l -c "curl http://tools.netsa.cert.org/releases/silk-$SILK_VERSION.tar.gz | tar -xz && cd silk-* && ./configure --with-python --enable-ipv6 --enable-data-rootdir=/data/ && make && make install && cd ../"
+RUN curl http://tools.netsa.cert.org/releases/libfixbuf-$FIXBUF_VERSION.tar.gz | tar -xz && cd libfixbuf-* && ./configure && make && make install && cd ../ && rm -rf libfixbuf-$FIXBUF_VERSION
+RUN curl http://tools.netsa.cert.org/releases/silk-$SILK_VERSION.tar.gz | tar -xz && cd silk-* && ./configure --with-python --enable-ipv6 --enable-data-rootdir=/data/ && make && make install && cd ../ && rm -rf silk-$SILK_VERSION
 ENV LD_LIBRARY_PATH=/usr/local/lib
-RUN su -l -c "curl http://tools.netsa.cert.org/releases/netsa-python-$NETSA_PYTHON_VERSION.tar.gz | tar -xz && cd netsa-python-* && python setup.py install && cd ../"
-RUN su -l -c "curl http://tools.netsa.cert.org/releases/pyfixbuf-$PYFIXBUF_VERSION.tar.gz | tar -xz && cd pyfixbuf-* && python setup.py build && python setup.py install && cd ../"
-RUN su -l -c "curl http://tools.netsa.cert.org/releases/rayon-$RAYON_VERSION.tar.gz | tar -xz && cd rayon-* && python setup.py install && cd ../"
-RUN su -l -c "curl http://tools.netsa.cert.org/releases/yaf-$YAF_VERSION.tar.gz | tar -xz && cd yaf-* && ./configure && make && make install && cd ../"
-RUN su -l -c "curl http://tools.netsa.cert.org/releases/super_mediator-$SUPER_VERSION.tar.gz | tar -xz && cd super_mediator-* && ./configure --with-mysql && make && make install && cd ../"
-# RUN su -l -c "curl http://tools.netsa.cert.org/releases/libschemaTools-$SCHEMATOOLS_VERSION.tar.gz | tar -xz && cd libschemaTools-* && ./configure && make && make install && cd ../"
+RUN curl http://tools.netsa.cert.org/releases/netsa-python-$NETSA_PYTHON_VERSION.tar.gz | tar -xz && cd netsa-python-* && python setup.py install && cd ../ && rm -rf netsa-python-$NETSA_PYTHON_VERSION
+RUN curl http://tools.netsa.cert.org/releases/pyfixbuf-$PYFIXBUF_VERSION.tar.gz | tar -xz && cd pyfixbuf-* && python setup.py build && python setup.py install && cd ../ && rm -rf pyfixbuf-$PYFIXBUF_VERSION
+RUN curl http://tools.netsa.cert.org/releases/rayon-$RAYON_VERSION.tar.gz | tar -xz && cd rayon-* && python setup.py install && cd ../ && rm -rf rayon-$RAYON_VERSION
+RUN curl http://tools.netsa.cert.org/releases/yaf-$YAF_VERSION.tar.gz | tar -xz && cd yaf-* && ./configure && make && make install && cd ../ && rm -rf yaf-$YAF_VERSION
+RUN curl http://tools.netsa.cert.org/releases/super_mediator-$SUPER_VERSION.tar.gz | tar -xz && cd super_mediator-* && ./configure --with-mysql && make && make install && cd ../ && rm -rf super_mediator-$SUPER_VERSION
+# RUN curl http://tools.netsa.cert.org/releases/libschemaTools-$SCHEMATOOLS_VERSION.tar.gz | tar -xz && cd libschemaTools-* && ./configure && make && make install && cd ../ && rm -rf libschemaTools-$SCHEMATOOLS_VERSION
 # Install zeromq 2.2 for snarf
-# RUN su -l -c "curl http://tools.netsa.cert.org/releases/snarf-$SNARF_VERSION.tar.gz | tar -xz && cd snarf-* && ./configure && make && make install && cd ../"
+# RUN curl http://tools.netsa.cert.org/releases/snarf-$SNARF_VERSION.tar.gz | tar -xz && cd snarf-* && ./configure && make && make install && cd ../ && rm -rf snarf-$SNARF_VERSION
 # Run ldconfig to create necessary links to shared libraries so pipeline works.
 RUN su -l -c "ldconfig"
-RUN su -l -c "curl http://tools.netsa.cert.org/releases/analysis-pipeline-$PIPELINE_VERSION.tar.gz | tar -xz && cd analysis-pipeline-* && ./configure --with-silk-config=/usr/local/bin/silk_config && make && make install && cd ../"
+RUN curl http://tools.netsa.cert.org/releases/analysis-pipeline-$PIPELINE_VERSION.tar.gz | tar -xz && cd analysis-pipeline-* && ./configure --with-silk-config=/usr/local/bin/silk_config && make && make install && cd ../ && rm -rf analysis-pipeline-$PIPELINE_VERSION
 # Create country code file for pipeline
-RUN su -l -c "wget -nc -O - http://geolite.maxmind.com/download/geoip/database/GeoIPCountryCSV.zip | gunzip - | rwgeoip2ccmap >/usr/local/share/silk/country_codes.pmap"
+RUN wget -nc -O - http://geolite.maxmind.com/download/geoip/database/GeoIPCountryCSV.zip | gunzip - | rwgeoip2ccmap >/usr/local/share/silk/country_codes.pmap
