@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+
+  silklive:
+    image: certcc/silklive:${TAG_VERSION:-latest}
+    build:
+      context: .
+      args:
+        http_proxy:
+        https_proxy:
+        no_proxy:
