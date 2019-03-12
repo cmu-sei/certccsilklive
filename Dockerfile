@@ -1,6 +1,6 @@
 # SiLK Sandbox
 #
-# VERSION	2.1.0
+# VERSION	2.1.1
 # Copyright 2016 Carnegie Mellon University
 # This material is based upon work funded and supported by Flocon - which is funded by Cost Recovery Dollars under Contract No. FA8721-05-C-0003 with Carnegie Mellon University for the operation of the Software Engineering Institute, a federally funded research and development center sponsored by the United States Department of Defense.
 # Any opinions, findings and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of Flocon - which is funded by Cost Recovery Dollars or the United States Department of Defense.
@@ -14,10 +14,10 @@ MAINTAINER Matt Heckathorn <maheckathorn@cert.org>
 ENV VIRTUSER demo
 
 # Specify software versions to download
-ARG SILK_VERSION=3.17.2
-ARG FIXBUF_VERSION=2.1.0
+ARG SILK_VERSION=3.18.0
+ARG FIXBUF_VERSION=2.2.0
 ARG NETSA_PYTHON_VERSION=1.5
-ARG PYFIXBUF_VERSION=0.4.0
+ARG PYFIXBUF_VERSION=0.6.0
 ARG RAYON_VERSION=1.4.3
 ARG YAF_VERSION=2.10.0
 ARG SUPER_VERSION=1.6.0
@@ -62,6 +62,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		tmux \
 		vim \
 		wget \
+        sqlite3 \
 		iputils-ping \
 		&& apt-get clean \
 		&& rm -rf /var/lib/apt/lists/*
