@@ -1,7 +1,7 @@
 # Notes
 Webpage http://tools.netsa.cert.org/
 
-This image contains SiLK 3.17.2.
+This image contains SiLK 3.19.0.
 
 Manual Use: 
 ```
@@ -16,12 +16,12 @@ To be used with the following project: [ISLET](https://github.com/jonschipp/ISLE
 # Image Details
 
 The image has the following additional software installed over the base ubuntu docker image:
-1. SiLK 3.17.2
-2. Fixbuf 2.1.0
+1. SiLK 3.19.0
+2. Fixbuf 2.4.0
 3. NetSA Python 1.5
 4. Rayon 1.4.3
-5. yaf 2.10.0
-6. super_mediator 1.6.0
+5. yaf 2.11.0
+6. super_mediator 1.7.1
 6. Analysis Pipeline 4.5.1
 7. gawk, wget, & curl
 8. tmux & screen
