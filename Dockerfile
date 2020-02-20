@@ -14,13 +14,13 @@ MAINTAINER Matt Heckathorn <maheckathorn@cert.org>
 ENV VIRTUSER demo
 
 # Specify software versions to download
-ARG SILK_VERSION=3.18.0
-ARG FIXBUF_VERSION=2.2.0
+ARG SILK_VERSION=3.19.0
+ARG FIXBUF_VERSION=2.4.0
 ARG NETSA_PYTHON_VERSION=1.5
-ARG PYFIXBUF_VERSION=0.6.0
+ARG PYFIXBUF_VERSION=0.8.1
 ARG RAYON_VERSION=1.4.3
-ARG YAF_VERSION=2.10.0
-ARG SUPER_VERSION=1.6.0
+ARG YAF_VERSION=2.11.0
+ARG SUPER_VERSION=1.7.1
 ARG PIPELINE_VERSION=4.5.1
 
 # Set noninteractive mode for build only
@@ -81,4 +81,4 @@ RUN curl https://tools.netsa.cert.org/releases/super_mediator-$SUPER_VERSION.tar
 RUN su -l -c "ldconfig"
 RUN curl https://tools.netsa.cert.org/releases/analysis-pipeline-$PIPELINE_VERSION.tar.gz | tar -xz && cd analysis-pipeline-* && ./configure --with-silk-config=/usr/local/bin/silk_config && make && make install && cd ../ && rm -rf analysis-pipeline-$PIPELINE_VERSION
 # Create country code file for pipeline
-RUN wget -nc -O /tmp/GeoLite2-Country-CSV.zip http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip && unzip -j /tmp/GeoLite2-Country-CSV.zip -d /tmp/GeoLite2-Country-CSV && rwgeoip2ccmap --input-path=/tmp/GeoLite2-Country-CSV --output-path=/usr/local/share/silk/country_codes.pmap && rm -rf /tmp/GeoLite2-Country-CSV /tmp/GeoLite2-Country-CSV.zip
+RUN wget -nc -O /tmp/GeoLite2-Country-CSV.zip  https://web.archive.org/web/20191227183011/https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip && unzip -j /tmp/GeoLite2-Country-CSV.zip -d /tmp/GeoLite2-Country-CSV && rwgeoip2ccmap --input-path=/tmp/GeoLite2-Country-CSV --output-path=/usr/local/share/silk/country_codes.pmap && rm -rf /tmp/GeoLite2-Country-CSV /tmp/GeoLite2-Country-CSV.zip
