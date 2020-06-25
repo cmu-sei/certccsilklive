@@ -1,20 +1,20 @@
 # SiLK Sandbox
 #
-# VERSION	2.1.1
+# VERSION	2.2.0
 # Copyright 2016 Carnegie Mellon University
 # This material is based upon work funded and supported by Flocon - which is funded by Cost Recovery Dollars under Contract No. FA8721-05-C-0003 with Carnegie Mellon University for the operation of the Software Engineering Institute, a federally funded research and development center sponsored by the United States Department of Defense.
 # Any opinions, findings and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of Flocon - which is funded by Cost Recovery Dollars or the United States Department of Defense.
 # NO WARRANTY. THIS CARNEGIE MELLON UNIVERSITY AND SOFTWARE ENGINEERING INSTITUTE MATERIAL IS FURNISHED ON AN “AS-IS” BASIS. CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESSED OR IMPLIED, AS TO ANY MATTER INCLUDING, BUT NOT LIMITED TO, WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY, OR RESULTS OBTAINED FROM USE OF THE MATERIAL. CARNEGIE MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.
 # [Distribution Statement A] This material has been approved for public release and unlimited distribution. Please see Copyright notice for non-US Government use and distribution.
 # DM-0004288
-FROM ubuntu
+FROM ubuntu:18.04
 MAINTAINER Matt Heckathorn <maheckathorn@cert.org>
 
 # Specify container username (e.g. training, demo)
 ENV VIRTUSER demo
 
 # Specify software versions to download
-ARG SILK_VERSION=3.19.0
+ARG SILK_VERSION=3.19.1
 ARG FIXBUF_VERSION=2.4.0
 ARG NETSA_PYTHON_VERSION=1.5
 ARG PYFIXBUF_VERSION=0.8.1
