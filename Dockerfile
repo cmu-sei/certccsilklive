@@ -7,20 +7,18 @@
 # NO WARRANTY. THIS CARNEGIE MELLON UNIVERSITY AND SOFTWARE ENGINEERING INSTITUTE MATERIAL IS FURNISHED ON AN “AS-IS” BASIS. CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESSED OR IMPLIED, AS TO ANY MATTER INCLUDING, BUT NOT LIMITED TO, WARRANTY OF FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY, OR RESULTS OBTAINED FROM USE OF THE MATERIAL. CARNEGIE MELLON UNIVERSITY DOES NOT MAKE ANY WARRANTY OF ANY KIND WITH RESPECT TO FREEDOM FROM PATENT, TRADEMARK, OR COPYRIGHT INFRINGEMENT.
 # [Distribution Statement A] This material has been approved for public release and unlimited distribution. Please see Copyright notice for non-US Government use and distribution.
 # DM-0004288
-FROM ubuntu:18.04
-MAINTAINER Matt Heckathorn <maheckathorn@cert.org>
+FROM ubuntu:22.04
+LABEL maintainer="Matt Heckathorn <maheckathorn@cert.org>"
 
 # Specify container username (e.g. training, demo)
 ENV VIRTUSER demo
 
 # Specify software versions to download
-ARG SILK_VERSION=3.19.1
-ARG FIXBUF_VERSION=2.4.0
-ARG NETSA_PYTHON_VERSION=1.5
-ARG PYFIXBUF_VERSION=0.8.1
-ARG RAYON_VERSION=1.4.3
-ARG YAF_VERSION=2.11.0
-ARG SUPER_VERSION=1.7.1
+ARG SILK_VERSION=3.19.2
+ARG FIXBUF_VERSION=2.4.2
+ARG PYFIXBUF_VERSION=0.9.0
+ARG YAF_VERSION=2.13.0
+ARG SUPER_VERSION=1.9.1
 ARG PIPELINE_VERSION=4.5.1
 
 # Set noninteractive mode for build only
@@ -53,9 +51,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		mysql-server \
 		nano \
 		netcat \
-		python-cairo \
-		python-dev \
-		python-scapy \
+		python3-cairo \
+		python3-dev \
+		python3-scapy \
+		python3-pip \
 		r-base \
 		screen \
 		tcpdump \
@@ -72,9 +71,7 @@ RUN adduser --disabled-password --gecos "" $VIRTUSER
 RUN curl https://tools.netsa.cert.org/releases/libfixbuf-$FIXBUF_VERSION.tar.gz | tar -xz && cd libfixbuf-* && ./configure && make && make install && cd ../ && rm -rf libfixbuf-$FIXBUF_VERSION
 RUN curl https://tools.netsa.cert.org/releases/silk-$SILK_VERSION.tar.gz | tar -xz && cd silk-* && ./configure --with-python --enable-ipv6 --enable-data-rootdir=/data/ && make && make install && cd ../ && rm -rf silk-$SILK_VERSION
 ENV LD_LIBRARY_PATH=/usr/local/lib
-RUN curl https://tools.netsa.cert.org/releases/netsa-python-$NETSA_PYTHON_VERSION.tar.gz | tar -xz && cd netsa-python-* && python setup.py install && cd ../ && rm -rf netsa-python-$NETSA_PYTHON_VERSION
-RUN curl https://tools.netsa.cert.org/releases/pyfixbuf-$PYFIXBUF_VERSION.tar.gz | tar -xz && cd pyfixbuf-* && python setup.py build && python setup.py install && cd ../ && rm -rf pyfixbuf-$PYFIXBUF_VERSION
-RUN curl https://tools.netsa.cert.org/releases/rayon-$RAYON_VERSION.tar.gz | tar -xz && cd rayon-* && python setup.py install && cd ../ && rm -rf rayon-$RAYON_VERSION
+RUN curl https://tools.netsa.cert.org/releases/pyfixbuf-$PYFIXBUF_VERSION.tar.gz --output pyfixbuf-$PYFIXBUF_VERSION.tar.gz && pip install pyfixbuf-$PYFIXBUF_VERSION.tar.gz && rm -rf pyfixbuf-$PYFIXBUF_VERSION.tar.gz
 RUN curl https://tools.netsa.cert.org/releases/yaf-$YAF_VERSION.tar.gz | tar -xz && cd yaf-* && ./configure && make && make install && cd ../ && rm -rf yaf-$YAF_VERSION
 RUN curl https://tools.netsa.cert.org/releases/super_mediator-$SUPER_VERSION.tar.gz | tar -xz && cd super_mediator-* && ./configure --with-mysql && make && make install && cd ../ && rm -rf super_mediator-$SUPER_VERSION
 # Run ldconfig to create necessary links to shared libraries so pipeline works.
