@@ -1,7 +1,7 @@
 # Notes
 Webpage http://tools.netsa.cert.org/
 
-This image contains SiLK 3.19.0.
+This image contains SiLK 3.19.2.
 
 Manual Use: 
 ```
@@ -16,12 +16,11 @@ To be used with the following project: [ISLET](https://github.com/jonschipp/ISLE
 # Image Details
 
 The image has the following additional software installed over the base ubuntu docker image:
-1. SiLK 3.19.0
-2. Fixbuf 2.4.0
-3. NetSA Python 1.5
-4. Rayon 1.4.3
-5. yaf 2.11.0
-6. super_mediator 1.7.1
+1. SiLK 3.19.2
+2. Fixbuf 2.4.2
+3. Pyfixbuf 0.9.0
+4. yaf 2.13.0
+5. super_mediator 1.9.1
 6. Analysis Pipeline 4.5.1
 7. gawk, wget, & curl
 8. tmux & screen
@@ -29,7 +28,7 @@ The image has the following additional software installed over the base ubuntu d
 10. MySQL server & client
 11. tcpdump, netcat, and scapy
 12. R
-13. man-pages
+13. python3-pip
 
 SiLK has been compiled with the root directory for the SiLK repository set to /data.  This can be changed by setting the SILK_DATA_ROOTDIR environment variable.  See [Environment](http://tools.netsa.cert.org/silk/silk.html#ENVIRONMENT) in the SiLK documentation for more information.  
 
