@@ -72,7 +72,7 @@ RUN curl https://tools.netsa.cert.org/releases/libfixbuf-$FIXBUF_VERSION.tar.gz 
 RUN curl https://tools.netsa.cert.org/releases/silk-$SILK_VERSION.tar.gz | tar -xz && cd silk-* && ./configure --with-python --enable-ipv6 --enable-data-rootdir=/data/ && make && make install && cd ../ && rm -rf silk-$SILK_VERSION
 ENV LD_LIBRARY_PATH=/usr/local/lib
 RUN curl https://tools.netsa.cert.org/releases/pyfixbuf-$PYFIXBUF_VERSION.tar.gz --output pyfixbuf-$PYFIXBUF_VERSION.tar.gz && pip install pyfixbuf-$PYFIXBUF_VERSION.tar.gz && rm -rf pyfixbuf-$PYFIXBUF_VERSION.tar.gz
-RUN curl https://tools.netsa.cert.org/releases/yaf-$YAF_VERSION.tar.gz | tar -xz && cd yaf-* && ./configure && make && make install && cd ../ && rm -rf yaf-$YAF_VERSION
+RUN curl https://tools.netsa.cert.org/releases/yaf-$YAF_VERSION.tar.gz | tar -xz && cd yaf-* && ./configure --enable-applabel --enable-plugins && make && make install && cd ../ && rm -rf yaf-$YAF_VERSION
 RUN curl https://tools.netsa.cert.org/releases/super_mediator-$SUPER_VERSION.tar.gz | tar -xz && cd super_mediator-* && ./configure --with-mysql && make && make install && cd ../ && rm -rf super_mediator-$SUPER_VERSION
 # Run ldconfig to create necessary links to shared libraries so pipeline works.
 RUN su -l -c "ldconfig"
