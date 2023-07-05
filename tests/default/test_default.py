@@ -12,7 +12,7 @@ def test_fixbuf_version(host):
 
 
 def test_silk_version(host):
-    version = "3.19.2"
+    version = "3.21.0"
     command = """/usr/local/bin/silk_config --silk-version"""
 
     cmd = host.run(command)
@@ -21,7 +21,7 @@ def test_silk_version(host):
 
 
 def test_yaf_version(host):
-    version = "2.13.0"
+    version = "2.14.0"
     command = """PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig \
                  pkg-config --modversion libyaf"""
 
