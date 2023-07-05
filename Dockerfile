@@ -14,7 +14,7 @@ LABEL maintainer="Matt Heckathorn <maheckathorn@cert.org>"
 ENV VIRTUSER demo
 
 # Specify software versions to download
-ARG SILK_VERSION=3.19.2
+ARG SILK_VERSION=3.21.0
 ARG FIXBUF_VERSION=2.4.2
 ARG PYFIXBUF_VERSION=0.9.0
 ARG YAF_VERSION=2.13.0
