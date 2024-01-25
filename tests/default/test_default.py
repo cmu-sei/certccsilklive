@@ -12,7 +12,7 @@ def test_fixbuf_version(host):
 
 
 def test_silk_version(host):
-    version = "3.21.0"
+    version = "3.22.1"
     command = """/usr/local/bin/silk_config --silk-version"""
 
     cmd = host.run(command)
@@ -21,7 +21,7 @@ def test_silk_version(host):
 
 
 def test_yaf_version(host):
-    version = "2.14.0"
+    version = "2.15.0"
     command = """PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig \
                  pkg-config --modversion libyaf"""
 
@@ -31,7 +31,7 @@ def test_yaf_version(host):
 
 
 def test_super_mediator_version(host):
-    version = "1.9.1"
+    version = "1.10.0"
     command = r"""LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH \
                  PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig \
                  /usr/local/bin/super_mediator --version 2>&1 | \

@@ -14,11 +14,11 @@ LABEL maintainer="Matt Heckathorn <maheckathorn@cert.org>"
 ENV VIRTUSER demo
 
 # Specify software versions to download
-ARG SILK_VERSION=3.21.0
+ARG SILK_VERSION=3.22.1
 ARG FIXBUF_VERSION=2.4.2
 ARG PYFIXBUF_VERSION=0.9.0
-ARG YAF_VERSION=2.14.0
-ARG SUPER_VERSION=1.9.1
+ARG YAF_VERSION=2.15.0
+ARG SUPER_VERSION=1.10.0
 ARG PIPELINE_VERSION=4.5.1
 
 # Set noninteractive mode for build only
