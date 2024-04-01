@@ -12,7 +12,7 @@ def test_fixbuf_version(host):
 
 
 def test_silk_version(host):
-    version = "3.22.1"
+    version = "3.22.2"
     command = """/usr/local/bin/silk_config --silk-version"""
 
     cmd = host.run(command)
