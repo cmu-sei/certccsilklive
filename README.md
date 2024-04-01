@@ -1,7 +1,9 @@
 # Notes
 Webpage http://tools.netsa.cert.org/
 
-This image contains SiLK 3.19.2.
+This image contains SiLK, the System for Internet-Level Knowledge, which is a collection of traffic analysis tools developed by the CERT Network Situational Awareness Team (CERT NetSA) to facilitate security analysis of large networks. The SiLK tool suite supports the efficient collection, storage, and analysis of network flow data, enabling network security analysts to rapidly query large historical traffic data sets. SiLK is ideally suited for analyzing traffic on the backbone or border of a large, distributed enterprise or mid-sized ISP.
+
+This container image is intended to be used for learning SiLK.  The [SEI](https://www.sei.cmu.edu/) makes use of it with the following project: [ISLET](https://github.com/jonschipp/ISLET) to provide SiLK training.
 
 Manual Use: 
 ```
@@ -10,18 +12,16 @@ docker run -it certcc/silklive bash
 
 This repo will always contain the latest stable SiLK release for training.
 
-To be used with the following project: [ISLET](https://github.com/jonschipp/ISLET)
-
 
 # Image Details
 
 The image has the following additional software installed over the base ubuntu docker image:
-1. SiLK 3.19.2
-2. Fixbuf 2.4.2
-3. Pyfixbuf 0.9.0
-4. yaf 2.13.0
-5. super_mediator 1.9.1
-6. Analysis Pipeline 4.5.1
+1. SiLK
+2. Fixbuf
+3. Pyfixbuf
+4. yaf
+5. super_mediator
+6. Analysis Pipeline
 7. gawk, wget, & curl
 8. tmux & screen
 9. vim, emacs, & nano
